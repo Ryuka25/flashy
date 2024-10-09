@@ -1,75 +1,15 @@
-# Nuxt 3 Minimal Starter
+![Flashy](docs/assets/flashy.jpg)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Flashy
 
-## Setup
+Tool to help developers memorize and master essential keyboard shortcuts for their primary IDE, boosting productivity and workflow efficiency.
 
-Make sure to install the dependencies:
+![Flashy Preview](docs/assets/flashy-preview.png)
 
-```bash
-# npm
-npm install
+## Contributing
 
-# pnpm
-pnpm install
+Please read the [contributing guide](/CONTRIBUTING.md).
 
-# yarn
-yarn install
+## License
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Licensed under the [Apache-2.0 license ](/LICENSE).
