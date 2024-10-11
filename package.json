@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@nuxt/fonts": "^0.10.0",
+    "@nuxt/icon": "^1.5.6",
     "@nuxtjs/color-mode": "^3.5.1",
     "@vueuse/core": "^11.1.0",
     "class-variance-authority": "^0.7.0",
