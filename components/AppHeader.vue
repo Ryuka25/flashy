@@ -6,9 +6,7 @@ const colorMode = useColorMode();
 
 <template>
     <nav class="flex justify-between items-center p-2">
-        <div class="ml-4">
-            <Zap class="inline-block h-4 w-4" /> FLASHY
-        </div>
+        <AppName class="ml-4" />
         <DropdownMenu>
             <DropdownMenuTrigger as-child>
                 <Button variant="outline">
