@@ -12,8 +12,10 @@
   "dependencies": {
     "@nuxt/fonts": "^0.10.0",
     "@nuxtjs/color-mode": "^3.5.1",
+    "@vueuse/core": "^11.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "embla-carousel-vue": "^8.3.0",
     "lucide-vue-next": "^0.451.0",
     "nuxt": "^3.13.0",
     "radix-vue": "^1.9.7",
