@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Save current file",
+        "description": "Save the current opened file",
+        "keyboardShortcut": ["ctrl + s"]
+    },
+    {
+        "name": "Search current file",
+        "description": "Open search dialog for the current file",
+        "keyboardShortcut": ["ctrl + f"]
+    },
+    {
+        "name": "Change language mode",
+        "description": "Change the language mode for the current file",
+        "keyboardShortcut": ["ctrl + k", "m"]
+    },
+    {
+        "name": "Format file",
+        "description": "Format the current file using the default formatter",
+        "keyboardShortcut": ["shift + alt + f"]
+    },
+    {
+        "name": "Toogle terminal",
+        "description": "Show or hide terminal in editor",
+        "keyboardShortcut": ["ctrl + `"]
+    },
+    {
+        "name": "Create new terminal",
+        "description": "Create a new instance of the terminal in editor",
+        "keyboardShortcut": ["ctrl + shift + `"]
+    },
+    {
+        "name": "Toogle sidepanel",
+        "description": "Show or hide sidepanel in editor",
+        "keyboardShortcut": ["ctrl + b"]
+    },
+    {
+        "name": "Format selection",
+        "description": "Format the current selected line using the default formatter",
+        "keyboardShortcut": ["ctrl + k", "ctrl + f"]
+    },
+    {
+        "name": "Save file without formatting",
+        "description": "Save file without trigerring the formatter",
+        "keyboardShortcut": ["ctrl + k", "ctrl + shift + s"]
+    }
+]
