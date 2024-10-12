@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="text-xs text-black/40 dark:text-white/40">
-      © Copyright 2024 Antanarivo, Madagascar. All rights reserved.
+      © Copyright 2024 Antananarivo, Madagasikara. All rights reserved.
     </div>
   </div>
 </template>
