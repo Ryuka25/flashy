@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/fonts',
     '@nuxt/icon',
+    'nuxt-gtag',
   ],
   colorMode: {
     classSuffix: '',
@@ -22,5 +23,8 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: './components/ui',
+  },
+  gtag: {
+    // enabled: process.env.NODE_ENV === 'production',
   },
 })
