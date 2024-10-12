@@ -14,7 +14,7 @@ const onGetStartedClick = () => {
 </script>
 
 <template>
-    <div class="flex flex-col lg:flex-row items-center justify-around grow max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row items-center justify-around grow max-w-7xl mx-auto px-4">
         <div class="lg:block lg:text-left text-center">
             <h2 class="text-5xl lg:text-7xl font-bold"><span class="underline">Flashy</span> the
                 way you code</h2>
