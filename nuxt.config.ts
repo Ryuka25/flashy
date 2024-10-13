@@ -7,6 +7,9 @@ export default defineNuxtConfig({
         lang: 'en',
       },
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      script: [
+        { defer: true, src: "https://cloud.umami.is/script.js", "data-website-id": "e05f579d-b02e-4db9-a0fa-16946f08f77d" }
+      ]
     },
   },
   devtools: { enabled: true },
