@@ -1,4 +1,9 @@
 <script lang="ts" setup>
+
+const props = defineProps<{
+    keyboardGroup: string
+}>();
+
 /**
  * Given a string representing a keyboard shortcut (e.g. "Ctrl + Shift + A"),
  * returns an array of strings representing the individual keys in the
@@ -8,12 +13,18 @@
  * @returns {string[]} - An array of strings representing the individual keys in the shortcut.
  */
 let splitKeyboardGroupString = function (groupString: string): string[] {
-    return groupString.split("+").map((key) => key.trim());
-}
+    // Replace escaped '+' with a temporary placeholder
+    const ESCAPED_PLUS_PLACEHOLDER = "ESCAPED_PLUS";
 
-const props = defineProps<{
-    keyboardGroup: string
-}>();
+    // Replace all escaped '+' characters
+    groupString = groupString.replace(/\\\+/g, ESCAPED_PLUS_PLACEHOLDER);
+
+    // Split by '+' and trim each part
+    const parts = groupString.split("+").map((key) => key.trim());
+
+    // Replace placeholder back to original character
+    return parts.map((key) => key.replace(ESCAPED_PLUS_PLACEHOLDER, "+"));
+};
 </script>
 
 <template>
