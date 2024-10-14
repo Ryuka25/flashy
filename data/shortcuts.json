@@ -1,47 +1,344 @@
 [
-    {
-        "name": "Save current file",
-        "description": "Save the current opened file",
-        "keyboardShortcut": ["ctrl + s"]
-    },
-    {
-        "name": "Search current file",
-        "description": "Open search dialog for the current file",
-        "keyboardShortcut": ["ctrl + f"]
-    },
-    {
-        "name": "Change language mode",
-        "description": "Change the language mode for the current file",
-        "keyboardShortcut": ["ctrl + k", "m"]
-    },
-    {
-        "name": "Format file",
-        "description": "Format the current file using the default formatter",
-        "keyboardShortcut": ["shift + alt + f"]
-    },
-    {
-        "name": "Toogle terminal",
-        "description": "Show or hide terminal in editor",
-        "keyboardShortcut": ["ctrl + `"]
-    },
-    {
-        "name": "Create new terminal",
-        "description": "Create a new instance of the terminal in editor",
-        "keyboardShortcut": ["ctrl + shift + `"]
-    },
-    {
-        "name": "Toogle sidepanel",
-        "description": "Show or hide sidepanel in editor",
-        "keyboardShortcut": ["ctrl + b"]
-    },
-    {
-        "name": "Format selection",
-        "description": "Format the current selected line using the default formatter",
-        "keyboardShortcut": ["ctrl + k", "ctrl + f"]
-    },
-    {
-        "name": "Save file without formatting",
-        "description": "Save file without trigerring the formatter",
-        "keyboardShortcut": ["ctrl + k", "ctrl + shift + s"]
-    }
+  {
+    "name": "Show All Commands",
+    "description": "Open the command palette",
+    "keyboardShortcut": ["ctrl + shift + p"],
+    "keyboardShortcutAlternative": ["f1"]
+  },
+  {
+    "name": "Quick Open, Go to File",
+    "description": "Quickly open a file",
+    "keyboardShortcut": ["ctrl + p"]
+  },
+  {
+    "name": "Change language mode",
+    "description": "Change the language mode (e.g: html, css, python, etc.) for the current file",
+    "keyboardShortcut": ["ctrl + k", "m"]
+  },
+  {
+    "name": "Format selection",
+    "description": "Format the current selected line using the default formatter",
+    "keyboardShortcut": ["ctrl + k", "ctrl + f"]
+  },
+  {
+    "name": "Format file",
+    "description": "Format the current file using the default formatter",
+    "keyboardShortcut": ["shift + alt + f"]
+  },
+  {
+    "name": "New file",
+    "description": "Open a new file on a new tab",
+    "keyboardShortcut": ["ctrl + n"]
+  },
+
+  {
+    "name": "New window/instance",
+    "description": "Open a new instance of the editor",
+    "keyboardShortcut": ["ctrl + shift + n"]
+  },
+  {
+    "name": "Close file",
+    "description": "Close the current tab and the current file",
+    "keyboardShortcut": ["ctrl + w"]
+  },
+  {
+    "name": "Close window/instance",
+    "description": "Close the current instance of the editor",
+    "keyboardShortcut": ["ctrl + shift + w"]
+  },
+  {
+    "name": "Show Settings",
+    "description": "Open the settings view",
+    "keyboardShortcut": ["ctrl + ,"]
+  },
+  {
+    "name": "Keyboard Shortcuts",
+    "description": "Open the keyboard shortcuts editor",
+    "keyboardShortcut": ["ctrl + k", "ctrl + s"]
+  },
+  {
+    "name": "Escape this whole",
+    "description": "When something unwanted suddenly appears on your screen, try this key to quickly dismiss it",
+    "keyboardShortcut": ["esc"]
+  },
+  {
+    "name": "Move to beggining/end of a word",
+    "description": "",
+    "keyboardShortcut": ["ctrl + ←→"]
+  },
+  {
+    "name": "Extend selection to direction",
+    "description": "",
+    "keyboardShortcut": ["shift + ←→", "shift + ↑↓"]
+  },
+  {
+    "name": "Extend selection to beggining/end of a word",
+    "description": "",
+    "keyboardShortcut": ["ctrl + shift + ←→", "ctrl + shift + ↑↓"]
+  },
+  {
+    "name": "Select all",
+    "description": "Select all text in the editor",
+    "keyboardShortcut": ["ctrl + a"]
+  },
+  {
+    "name": "Copy Line",
+    "description": "Copy the current line when nothing is selected",
+    "keyboardShortcut": ["ctrl + c"]
+  },
+  {
+    "name": "Cut Line",
+    "description": "Cut the current line when nothing is selected",
+    "keyboardShortcut": ["ctrl + x"]
+  },
+  {
+    "name": "Paste",
+    "description": "Paste the copied content from the clipboard",
+    "keyboardShortcut": ["ctrl + v"]
+  },
+  {
+    "name": "Move Line Up/Down",
+    "description": "Move the whole line up or down",
+    "keyboardShortcut": ["alt + ↑↓"]
+  },
+  {
+    "name": "Copy Line Up/Down",
+    "description": "Copy the whole line up or down",
+    "keyboardShortcut": ["shift + alt + ↑↓"]
+  },
+  {
+    "name": "Remove Character Left",
+    "description": "Deletes the character to the left of the cursor or deletes the selected text.",
+    "keyboardShortcut": ["← backspace"]
+  },
+  {
+    "name": "Remove Character Right",
+    "description": "Deletes the character to the right of the cursor or deletes the selected text.",
+    "keyboardShortcut": ["del"]
+  },
+  {
+    "name": "Remove Word Left",
+    "description": "Deletes the remainging word to the left of the cursor or deletes the selected text.",
+    "keyboardShortcut": ["ctrl + ← backspace"]
+  },
+  {
+    "name": "Remove Word Right",
+    "description": "Deletes the character to the right of the cursor or deletes the selected text.",
+    "keyboardShortcut": ["ctrl + del"]
+  },
+  {
+    "name": "Delete Line",
+    "description": "Delete the current line",
+    "keyboardShortcut": ["ctrl + shift + k"]
+  },
+  {
+    "name": "Insert Line Below",
+    "description": "Insert a new line below the current line",
+    "keyboardShortcut": ["ctrl + enter"]
+  },
+  {
+    "name": "Insert Line Above",
+    "description": "Insert a new line above the current line",
+    "keyboardShortcut": ["ctrl + shift + enter"]
+  },
+  {
+    "name": "Undo action",
+    "description": "Undo the last action",
+    "keyboardShortcut": ["ctrl + z"]
+  },
+  {
+    "name": "Re-do action",
+    "description": "Re-do the last action",
+    "keyboardShortcut": ["ctrl + shift + z"]
+  },
+  {
+    "name": "Jump to Matching Bracket",
+    "description": "Jump to the matching bracket",
+    "keyboardShortcut": ["ctrl + shift + \\"]
+  },
+  {
+    "name": "Indent/Outdent Line",
+    "description": "Indent or outdent the current line",
+    "keyboardShortcut": ["ctrl + ]", "ctrl + ["]
+  },
+  {
+    "name": "Go to Beginning/End of Line",
+    "description": "Move the cursor to the beginning or end of the line",
+    "keyboardShortcut": ["home", "end"]
+  },
+  {
+    "name": "Go to Beginning/End of File",
+    "description": "Move the cursor to the beginning or end of the file",
+    "keyboardShortcut": ["ctrl + home", "ctrl + end"]
+  },
+  {
+    "name": "Split Editor",
+    "description": "Split the editor window",
+    "keyboardShortcut": ["ctrl + \\"]
+  },
+  {
+    "name": "Scroll Line Up/Down",
+    "description": "Scroll the current line up or down",
+    "keyboardShortcut": ["ctrl + ↑↓"]
+  },
+  {
+    "name": "Scroll Page Up/Down",
+    "description": "Scroll the page up or down",
+    "keyboardShortcut": ["alt + pgup", "alt + pgdn"]
+  },
+  {
+    "name": "Fold Region",
+    "description": "Fold (collapse) the selected region",
+    "keyboardShortcut": ["ctrl + shift + ["]
+  },
+  {
+    "name": "Unfold Region",
+    "description": "Unfold (uncollapse) the selected region",
+    "keyboardShortcut": ["ctrl + shift + ]"]
+  },
+  {
+    "name": "Fold All Subregions",
+    "description": "Fold (collapse) all subregions",
+    "keyboardShortcut": ["ctrl + k", "ctrl + ["]
+  },
+  {
+    "name": "Unfold All Subregions",
+    "description": "Unfold (uncollapse) all subregions",
+    "keyboardShortcut": ["ctrl + k", "ctrl + ]"]
+  },
+  {
+    "name": "Fold All Regions",
+    "description": "Fold (collapse) all regions",
+    "keyboardShortcut": ["ctrl + k", "ctrl + 0"]
+  },
+  {
+    "name": "Unfold All Regions",
+    "description": "Unfold (uncollapse) all regions",
+    "keyboardShortcut": ["ctrl + k", "ctrl + j"]
+  },
+  {
+    "name": "Add Line Comment",
+    "description": "Add a line comment",
+    "keyboardShortcut": ["ctrl + k", "ctrl + c"]
+  },
+  {
+    "name": "Remove Line Comment",
+    "description": "Remove a line comment",
+    "keyboardShortcut": ["ctrl + k", "ctrl + u"]
+  },
+  {
+    "name": "Toggle Line Comment",
+    "description": "Toggle line comment for the current line or selection",
+    "keyboardShortcut": ["ctrl + /"]
+  },
+  {
+    "name": "Toggle Block Comment",
+    "description": "Toggle block comment for the current selection",
+    "keyboardShortcut": ["shift + alt + a"]
+  },
+  {
+    "name": "Toggle Word Wrap",
+    "description": "Toggle word wrap for long lines",
+    "keyboardShortcut": ["alt + z"]
+  },
+  {
+    "name": "Find",
+    "description": "Find text in the current file",
+    "keyboardShortcut": ["ctrl + f"]
+  },
+  {
+    "name": "Replace",
+    "description": "Replace text in the current file",
+    "keyboardShortcut": ["ctrl + h"]
+  },
+  {
+    "name": "Go to Line",
+    "description": "Open a dialog box to go to a specific line number",
+    "keyboardShortcut": ["ctrl + g"]
+  },
+  {
+    "name": "Go to Symbol",
+    "description": "Open a dialog box to go to a specific symbol",
+    "keyboardShortcut": ["ctrl + shift + o"]
+  },
+  {
+    "name": "Go to Next Error/Warning",
+    "description": "Go to the next error or warning in the file",
+    "keyboardShortcut": ["F8"]
+  },
+  {
+    "name": "Go to Previous Error/Warning",
+    "description": "Go to the previous error or warning in the file",
+    "keyboardShortcut": ["shift + F8"]
+  },
+  {
+    "name": "Peek Definition",
+    "description": "Peek at the definition of the symbol",
+    "keyboardShortcut": ["alt + F12"]
+  },
+  {
+    "name": "Toggle Sidebar Visibility",
+    "description": "Show or hide the sidebar",
+    "keyboardShortcut": ["ctrl + b"]
+  },
+  {
+    "name": "Toggle Sidebar Focus",
+    "description": "Show and focus or unfocus the sidebar",
+    "keyboardShortcut": ["ctrl + shift + e"]
+  },
+  {
+    "name": "Open File/Folder on the Sidebar",
+    "description": "Open file or folder when having focus on the sidebar",
+    "keyboardShortcut": ["space"]
+  },
+  {
+    "name": "Change File Tabs",
+    "description": "Switch between file tabs",
+    "keyboardShortcut": ["ctrl + tab"]
+  },
+  {
+    "name": "Toggle Full Screen",
+    "description": "Toggle between full screen mode",
+    "keyboardShortcut": ["F11"]
+  },
+  {
+    "name": "Zoom In/Out",
+    "description": "Zoom in or out of the editor",
+    "keyboardShortcut": ["ctrl + \\+", "ctrl + -"]
+  },
+  {
+    "name": "Save",
+    "description": "Save the current file",
+    "keyboardShortcut": ["ctrl + s"]
+  },
+  {
+    "name": "Save file without formatting",
+    "description": "Save file without triggering the formatter if \"format on save\" is enabled",
+    "keyboardShortcut": ["ctrl + k", "ctrl + shift + s"]
+  },
+  {
+    "name": "Save As",
+    "description": "Save the current file with a new name",
+    "keyboardShortcut": ["ctrl + shift + s"]
+  },
+  {
+    "name": "Open File From Explorer",
+    "description": "Open a file from the explorer",
+    "keyboardShortcut": ["ctrl + o"]
+  },
+  {
+    "name": "Reopen Closed File",
+    "description": "Reopen the last closed file",
+    "keyboardShortcut": ["ctrl + shift + t"]
+  },
+  {
+    "name": "Toggle Terminal",
+    "description": "Show or hide the integrated terminal",
+    "keyboardShortcut": ["ctrl + `"]
+  },
+  {
+    "name": "Create New Terminal",
+    "description": "Create a new terminal instance",
+    "keyboardShortcut": ["ctrl + shift + `"]
+  }
 ]
