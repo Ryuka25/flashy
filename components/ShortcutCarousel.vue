@@ -5,7 +5,7 @@ const props = defineProps<{ shortcuts: Shortcut[] }>()
 </script>
 
 <template>
-    <Carousel v-slot="{ canScrollNext }" class="relative w-full max-w-xs lg:max-w-lg">
+    <Carousel v-slot="{ canScrollNext }" class="relative w-full max-w-[17rem] min-[400px]:max-w-xs lg:max-w-lg">
         <CarouselContent>
             <CarouselItem v-for="shortcut in shortcuts" :key="shortcut.name">
                 <Card class="h-full">
