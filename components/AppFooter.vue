@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center pb-4 px-4">
+  <footer class="flex flex-col items-center justify-between">
     <div class="flex items-center gap-2 ">
       <AppName />
       <div class="text-xs text-black/40 dark:text-white/40">
@@ -7,8 +7,8 @@
         <NuxtLink to="https://github.com/Ryuka25" target="_blank" class="underline">Ryuka</NuxtLink>
       </div>
     </div>
-    <div class="text-xs text-black/40 dark:text-white/40">
-      © Copyright 2024 Antananarivo, Madagasikara. All rights reserved.
+    <div class="text-xs text-black/40 dark:text-white/40 text-center">
+      © Copyright 2024 Antananarivo. All rights reserved.
     </div>
-  </div>
+  </footer>
 </template>

@@ -1,7 +1,10 @@
 <template>
-    <div class="flex flex-col w-screen h-screen">
-        <AppHeader />
+    <div class="min-h-screen container mx-auto flex flex-col">
+        <!-- Header -->
+        <AppHeader class="py-2" />
+        <!-- Body (Content area) -->
         <slot />
-        <AppFooter />
+        <!-- Footer -->
+        <AppFooter class="py-2" />
     </div>
 </template>
