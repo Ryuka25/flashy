@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import Autoplay from 'embla-carousel-autoplay';
+
 import type { Shortcut } from '~/types/shortcut';
 
 const props = defineProps<{ shortcuts: Shortcut[] }>()
 </script>
 
 <template>
-    <Carousel v-slot="{ canScrollNext }" class="relative w-full max-w-[17rem] min-[400px]:max-w-xs lg:max-w-lg">
+    <Carousel v-slot="{ canScrollNext }" class="relative w-full max-w-[17rem] min-[400px]:max-w-xs lg:max-w-lg"
+        :opts="{ loop: true }" :plugins="[Autoplay({ delay: 3000 })]">
         <CarouselContent>
             <CarouselItem v-for="shortcut in shortcuts" :key="shortcut.name">
                 <Card class="h-full">
