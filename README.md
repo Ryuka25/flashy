@@ -4,7 +4,7 @@
 
 Tool to help developers memorize and master essential keyboard shortcuts for their primary IDE, boosting productivity and workflow efficiency.
 
-![Flashy Preview](docs/assets/flashy-preview.png)
+![Flashy Preview](/public/images/flashy-preview.png)
 
 ## Roadmap
 
