@@ -1,45 +1,114 @@
 <script setup lang="ts">
-import Autoplay from 'embla-carousel-autoplay';
+import type { Shortcut } from "~/types/shortcut";
+import type { CarouselApi } from "./ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
-import type { Shortcut } from '~/types/shortcut';
+const props = defineProps<{ shortcuts: Shortcut[] }>();
+const emblaApi = useShortcutCarouselEmblaApi();
+const shortcutAutoplay = useShortcutAutoplay();
 
-const props = defineProps<{ shortcuts: Shortcut[] }>()
+const setApi = (val: CarouselApi) => {
+  emblaApi.value = val;
+};
+
+const toogleAutoplay = () => {
+  const autoplay = emblaApi.value?.plugins()?.autoplay;
+  if (!autoplay) return;
+
+  const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play;
+  playOrStop();
+};
+
+watch(emblaApi, () => {
+  const autoplay = emblaApi.value?.plugins()?.autoplay;
+  if (!autoplay) return;
+
+  shortcutAutoplay.value = autoplay.isPlaying();
+  emblaApi.value
+    ?.on("autoplay:play", () => (shortcutAutoplay.value = true))
+    .on("autoplay:stop", () => (shortcutAutoplay.value = false))
+    .on("reInit", () => (shortcutAutoplay.value = autoplay.isPlaying()));
+});
 </script>
 
 <template>
-    <Carousel v-slot="{ canScrollNext }" class="relative w-full max-w-[17rem] min-[400px]:max-w-xs lg:max-w-lg"
-        :opts="{ loop: true }" :plugins="[Autoplay({ delay: 3000 })]">
-        <CarouselContent>
-            <CarouselItem v-for="shortcut in shortcuts" :key="shortcut.name">
-                <Card class="h-full">
-                    <CardContent class="flex flex-col items-center justify-between h-full">
-                        <div class="flex flex-col items-center text-black/80 dark:text-white/80 py-2">
-                            <svg class="h-12 w-12" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                viewBox="0 0 48 48">
-                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    d="m16.362 28.43l-6.35 4.81c-.59.45-1.42.41-1.97-.09l-2.04-1.85c-.67-.61-.67-1.67 0-2.28l5.51-5.02m4.84-4.42l.01-.01L30.93 6.282c.01-.01.03-.02.04-.03c.04-.04.07-.07.11-.09c.01-.02.03-.03.04-.04c.06-.04.12-.09.18-.13c.01-.01.02-.02.03-.02c.06-.04.11-.08.17-.11h.01c.05-.02.09-.05.14-.06c.04-.03.08-.04.13-.05a.3.3 0 0 1 .1-.04c.07-.02.14-.04.21-.05c.01-.01.03-.01.04-.01l.23-.03c.21-.02.43-.02.64.03c.02 0 .04 0 .07.01s.05.01.07.02q.21.045.42.15h.01l7.62 3.67c.09.05.18.1.27.16s.17.13.25.2h.01s.01 0 .01.01c.01 0 .02.01.03.02c.03.02.06.05.08.08c.03.03.06.07.1.12c0 0 .01 0 .02.01c.03.03.05.05.06.08c.05.05.08.11.12.17c.05.06.08.13.11.2c.01.02.03.05.03.08c.03.05.05.1.07.15q.01.01.01.02l.06.18c.02.06.03.13.04.19l.03.18c.01.08.01.15.01.23v.09c0-.11-.01-.22-.03-.32v-.01M22.191 24.01V24l11.049-8.379l.02-.01" />
-                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    d="m33.26 32.389l-.02-.01L22.19 24v-.01l-5.83-4.42l-6.348-4.809c-.59-.45-1.42-.41-1.97.09l-2.04 1.85c-.67.61-.67 1.67 0 2.28L11.513 24l4.839 4.42l.01.01L30.93 41.718h.01c.06.07.12.12.18.16c.12.09.24.18.38.25c0 0 0 .01.01.01c.13.06.27.11.41.15q.105.045.21.06c.14.02.27.04.41.04c.35.01.7-.07 1.02-.22h.01l7.619-3.67c.09-.05.18-.1.27-.16c.09-.07.19-.14.27-.21s.16-.15.23-.22c.34-.41.54-.93.54-1.49v-.09c0 .11-.01.22-.03.32v.01" />
-                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    d="M33.573 42.165a2.3 2.3 0 0 1-2.628-.448c.853.853 2.311.25 2.311-.957V7.24c0-1.206-1.458-1.81-2.31-.958a2.305 2.305 0 0 1 2.627-.447l7.618 3.663a2.31 2.31 0 0 1 1.309 2.083V36.42c0 .888-.509 1.698-1.31 2.083z" />
-                            </svg>
-                            <div>Visual Studio Code</div>
-                        </div>
-                        <div class="py-6 text-2xl flex flex-col gap-2">
-                            <ShortcutGroup v-for="keyboardGroup in shortcut.keyboardShortcut"
-                                :keyboardGroup="keyboardGroup" />
-                        </div>
-                        <div class="flex flex-col text-center">
-                            <div class="text-xl font-semibold">{{ shortcut.name }}</div>
-                            <div v-if="shortcut.description" class="text-xs text-black/80 dark:text-white/80">
-                                {{ shortcut.description }}
-                            </div>
-                        </div>
-                    </CardContent>
-                </Card>
-            </CarouselItem>
-        </CarouselContent>
-        <CarouselPrevious class="ml-2" />
-        <CarouselNext v-if="canScrollNext" class="mr-2" />
+  <div class="flex flex-col items-end gap-2">
+    <div class="flex items-center space-x-2">
+      <Switch
+        id="shortcut-autoplay"
+        :checked="shortcutAutoplay"
+        @update:checked="toogleAutoplay"
+      />
+      <Label for="shortcut-autoplay">Autoplay Shortcuts</Label>
+    </div>
+    <Carousel
+      v-slot="{ canScrollNext, canScrollPrev }"
+      class="relative w-full max-w-[17rem] min-[400px]:max-w-xs lg:max-w-lg"
+      :opts="{ loop: true }"
+      :plugins="[Autoplay({ delay: 2000 })]"
+      @init-api="setApi"
+    >
+      <CarouselContent>
+        <CarouselItem v-for="shortcut in shortcuts" :key="shortcut.name">
+          <Card class="h-full">
+            <CardContent
+              class="flex flex-col items-center justify-between h-full"
+            >
+              <div
+                class="flex flex-col items-center text-black/80 dark:text-white/80 py-2"
+              >
+                <svg
+                  class="h-12 w-12"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 48 48"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m16.362 28.43l-6.35 4.81c-.59.45-1.42.41-1.97-.09l-2.04-1.85c-.67-.61-.67-1.67 0-2.28l5.51-5.02m4.84-4.42l.01-.01L30.93 6.282c.01-.01.03-.02.04-.03c.04-.04.07-.07.11-.09c.01-.02.03-.03.04-.04c.06-.04.12-.09.18-.13c.01-.01.02-.02.03-.02c.06-.04.11-.08.17-.11h.01c.05-.02.09-.05.14-.06c.04-.03.08-.04.13-.05a.3.3 0 0 1 .1-.04c.07-.02.14-.04.21-.05c.01-.01.03-.01.04-.01l.23-.03c.21-.02.43-.02.64.03c.02 0 .04 0 .07.01s.05.01.07.02q.21.045.42.15h.01l7.62 3.67c.09.05.18.1.27.16s.17.13.25.2h.01s.01 0 .01.01c.01 0 .02.01.03.02c.03.02.06.05.08.08c.03.03.06.07.1.12c0 0 .01 0 .02.01c.03.03.05.05.06.08c.05.05.08.11.12.17c.05.06.08.13.11.2c.01.02.03.05.03.08c.03.05.05.1.07.15q.01.01.01.02l.06.18c.02.06.03.13.04.19l.03.18c.01.08.01.15.01.23v.09c0-.11-.01-.22-.03-.32v-.01M22.191 24.01V24l11.049-8.379l.02-.01"
+                  />
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m33.26 32.389l-.02-.01L22.19 24v-.01l-5.83-4.42l-6.348-4.809c-.59-.45-1.42-.41-1.97.09l-2.04 1.85c-.67.61-.67 1.67 0 2.28L11.513 24l4.839 4.42l.01.01L30.93 41.718h.01c.06.07.12.12.18.16c.12.09.24.18.38.25c0 0 0 .01.01.01c.13.06.27.11.41.15q.105.045.21.06c.14.02.27.04.41.04c.35.01.7-.07 1.02-.22h.01l7.619-3.67c.09-.05.18-.1.27-.16c.09-.07.19-.14.27-.21s.16-.15.23-.22c.34-.41.54-.93.54-1.49v-.09c0 .11-.01.22-.03.32v.01"
+                  />
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M33.573 42.165a2.3 2.3 0 0 1-2.628-.448c.853.853 2.311.25 2.311-.957V7.24c0-1.206-1.458-1.81-2.31-.958a2.305 2.305 0 0 1 2.627-.447l7.618 3.663a2.31 2.31 0 0 1 1.309 2.083V36.42c0 .888-.509 1.698-1.31 2.083z"
+                  />
+                </svg>
+                <div>Visual Studio Code</div>
+              </div>
+              <div class="py-6 text-2xl flex flex-col gap-2">
+                <ShortcutGroup
+                  v-for="keyboardGroup in shortcut.keyboardShortcut"
+                  :keyboardGroup="keyboardGroup"
+                />
+              </div>
+              <div class="flex flex-col text-center">
+                <div class="text-xl font-semibold">{{ shortcut.name }}</div>
+                <div
+                  v-if="shortcut.description"
+                  class="text-xs text-black/80 dark:text-white/80"
+                >
+                  {{ shortcut.description }}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </CarouselItem>
+      </CarouselContent>
+      <CarouselPrevious v-if="canScrollPrev" class="ml-2" />
+      <CarouselNext v-if="canScrollNext" class="mr-2" />
     </Carousel>
+  </div>
 </template>
