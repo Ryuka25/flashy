@@ -16,26 +16,26 @@ const onGetStartedClick = () => {
 </script>
 
 <template>
-  <main class="flex-1 flex flex-col lg:flex-row items-center justify-around">
-    <div class="lg:block lg:text-left text-center">
-      <h1 class="text-5xl lg:text-7xl font-bold">
+  <main class="flex flex-1 flex-col items-center justify-around lg:flex-row">
+    <div class="text-center lg:block lg:text-left">
+      <h1 class="text-5xl font-bold lg:text-7xl">
         <span class="underline">Flashy</span> the way you code
       </h1>
-      <p class="hidden lg:block my-8">{{ APP_DESCRIPTION }}</p>
+      <p class="my-8 hidden lg:block">{{ APP_DESCRIPTION }}</p>
       <div class="flex justify-center lg:justify-start">
         <Button @click="onGetStartedClick" class="my-4 text-right">
-          <Icon name="lucide:rocket" class="h-4 w-4 mr-4" />
+          <Icon name="lucide:rocket" class="mr-4 h-4 w-4" />
           Get started
         </Button>
-        <Button class="my-4 text-right ml-2" variant="outline" as-child>
+        <Button class="my-4 ml-2 text-right" variant="outline" as-child>
           <NuxtLink to="https://github.com/Ryuka25/flashy" target="_blank">
-            <Icon name="simple-icons:github" class="h-4 w-4 mr-4" />
+            <Icon name="simple-icons:github" class="mr-4 h-4 w-4" />
             Star on github
           </NuxtLink>
         </Button>
       </div>
     </div>
-    <div class="flex justify-center w-full">
+    <div class="flex w-full justify-center">
       <ShortcutCarousel
         id="shortcuts"
         v-if="shortcuts && shortcuts.length > 0"
