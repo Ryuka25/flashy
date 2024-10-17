@@ -14,6 +14,9 @@ export default defineNuxtConfig({
           "data-website-id": "e05f579d-b02e-4db9-a0fa-16946f08f77d",
         },
       ],
+      meta: [
+        {name: 'google-site-verification', content:'DYA2yBPp7veNqsgCMTJMXnwF9lUfI4HUOhvJM5hZUgs'}
+      ]
     },
   },
   devtools: { enabled: true },
