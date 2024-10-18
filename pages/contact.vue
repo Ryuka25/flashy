@@ -4,11 +4,13 @@ import { useToast } from "~/components/ui/toast";
 const { toast } = useToast();
 
 const isLoading = ref(false);
+const token = ref("");
 const form = ref({
   access_key: "58affffd-1130-485e-9514-8a78f9c8a9de",
   subject: "[IMPORTANT] ⚡ Flashy - Contact form submission",
   name: "",
   email: "",
+  botcheck: true,
   message: "",
 });
 
@@ -52,6 +54,10 @@ const submitForm = async () => {
     isLoading.value = false;
   }
 };
+
+watch(token, (value) => {
+  form.value.botcheck = !Boolean(value);
+});
 </script>
 
 <template>
@@ -93,6 +99,9 @@ const submitForm = async () => {
               v-model="form.message"
               required
             />
+          </div>
+          <div class="grid gap-2 lg:col-span-2">
+            <NuxtTurnstile v-model="token" />
           </div>
         </div>
         <Button type="submit" class="mt-8 w-full" :disabled="isLoading">

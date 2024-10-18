@@ -15,8 +15,11 @@ export default defineNuxtConfig({
         },
       ],
       meta: [
-        {name: 'google-site-verification', content:'DYA2yBPp7veNqsgCMTJMXnwF9lUfI4HUOhvJM5hZUgs'}
-      ]
+        {
+          name: "google-site-verification",
+          content: "DYA2yBPp7veNqsgCMTJMXnwF9lUfI4HUOhvJM5hZUgs",
+        },
+      ],
     },
   },
   devtools: { enabled: true },
@@ -26,7 +29,12 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxt/fonts",
     "@nuxt/icon",
+    "@nuxt/scripts",
+    "@nuxtjs/turnstile",
   ],
+  turnstile: {
+    siteKey: "0x4AAAAAAAx0B3KeeFZOsh_P",
+  },
   colorMode: {
     classSuffix: "",
   },
