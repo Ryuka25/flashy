@@ -101,7 +101,10 @@ watch(token, (value) => {
             />
           </div>
           <div class="grid gap-2 lg:col-span-2">
-            <NuxtTurnstile v-model="token" />
+            <NuxtTurnstile
+              v-model="token"
+              :options="{ size: 'flexible', appearance: 'interaction-only' }"
+            />
           </div>
         </div>
         <Button type="submit" class="mt-8 w-full" :disabled="isLoading">
