@@ -13,6 +13,11 @@ export default defineNuxtConfig({
           src: "https://cloud.umami.is/script.js",
           "data-website-id": "e05f579d-b02e-4db9-a0fa-16946f08f77d",
         },
+        {
+          defer: true,
+          src: "https://static.cloudflareinsights.com/beacon.min.js",
+          "data-cf-beacon": '{"token": "97be209b562347b1a3d75c422f0f9221"}',
+        },
       ],
       meta: [
         {
