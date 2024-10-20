@@ -8,17 +8,18 @@ const toogleColorMode = () => {
 
 <template>
   <header class="flex items-center justify-between">
-    <div class="flex">
+    <div class="flex items-center">
       <NuxtLink to="/">
         <AppName />
       </NuxtLink>
       <div class="ml-8">
         <NuxtLink
           to="/contact"
-          class="mr-4 opacity-80 hover:opacity-100"
-          active-class="opacity-100"
-          >Contact</NuxtLink
+          class="opacity-80 hover:opacity-100"
+          active-class="!opacity-100"
         >
+          Contact
+        </NuxtLink>
       </div>
     </div>
     <div class="flex gap-2">
