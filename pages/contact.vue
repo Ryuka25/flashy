@@ -1,17 +1,35 @@
 <script setup lang="ts">
+import { toTypedSchema } from "@vee-validate/zod";
+import { useForm } from "vee-validate";
+import { z } from "zod";
 import { useToast } from "~/components/ui/toast";
 
 const { toast } = useToast();
 
 const isLoading = ref(false);
 const token = ref("");
-const form = ref({
-  access_key: "58affffd-1130-485e-9514-8a78f9c8a9de",
-  subject: "[IMPORTANT] ⚡ Flashy - Contact form submission",
-  name: "",
-  email: "",
-  botcheck: true,
-  message: "",
+
+const contactFormSchema = toTypedSchema(
+  z.object({
+    access_key: z.string().default("58affffd-1130-485e-9514-8a78f9c8a9de"),
+    subject: z
+      .string()
+      .default("[IMPORTANT] ⚡ Flashy - Contact form submission"),
+    name: z.string().min(1, { message: "This is required" }).min(3),
+    botcheck: z.literal<boolean>(false).default(true),
+    email: z
+      .string()
+      .min(1, { message: "This is required" })
+      .email({ message: "Must be a valid email" }),
+    message: z
+      .string()
+      .min(1, { message: "This is required" })
+      .min(10, { message: "Provide more details please" }),
+  }),
+);
+
+const { handleSubmit, resetForm, values, setFieldValue } = useForm({
+  validationSchema: contactFormSchema,
 });
 
 const showErrorNotification = () => {
@@ -29,14 +47,13 @@ const showSuccessNotification = () => {
   });
 };
 
-const submitForm = async () => {
+const submitForm = handleSubmit(async (values) => {
   try {
     isLoading.value = true;
     const response = await $fetch<any>("https://api.web3forms.com/submit", {
       method: "POST",
-      body: form.value,
+      body: values,
     });
-    console.log(response);
     if (response.success) {
       showSuccessNotification();
     } else {
@@ -44,19 +61,17 @@ const submitForm = async () => {
     }
 
     // Reset form after submission
-    form.value.name = "";
-    form.value.email = "";
-    form.value.message = "";
+    resetForm();
   } catch (error) {
     console.log(error);
     showErrorNotification();
   } finally {
     isLoading.value = false;
   }
-};
+});
 
 watch(token, (value) => {
-  form.value.botcheck = !Boolean(value);
+  setFieldValue("botcheck", !Boolean(value));
 });
 </script>
 
@@ -69,37 +84,54 @@ watch(token, (value) => {
       </p>
     </div>
     <div class="mt-16 flex justify-around gap-4">
-      <form @submit.prevent="submitForm" class="w-full lg:w-1/2">
+      <form
+        @submit="submitForm"
+        class="w-full lg:w-1/2"
+        :validation-schema="contactFormSchema"
+      >
         <div class="grid gap-4 lg:grid-cols-2">
-          <div class="grid gap-2">
-            <Label for="password">Name</Label>
-            <Input
-              id="password"
-              type="text"
-              placeholder="Full name"
-              v-model="form.name"
-            />
-          </div>
-          <div class="grid gap-2">
-            <Label for="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="you@company.com"
-              required
-              v-model="form.email"
-            />
-          </div>
-          <div class="grid gap-2 lg:col-span-2">
-            <Label for="message">Message</Label>
-            <Textarea
-              class="min-h-40"
-              id="message"
-              placeholder="Leave us a message..."
-              v-model="form.message"
-              required
-            />
-          </div>
+          <FormField name="name" v-slot="{ componentField }" class="grid gap-2">
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input
+                  id="password"
+                  type="text"
+                  placeholder="Full name"
+                  :="componentField"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          </FormField>
+          <FormField name="email" v-slot="{ componentField }">
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input
+                  id="password"
+                  type="text"
+                  placeholder="you@company.com"
+                  :="componentField"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          </FormField>
+          <FormField name="message" v-slot="{ componentField }">
+            <FormItem class="lg:col-span-2">
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  class="min-h-40"
+                  id="message"
+                  placeholder="Leave us a message..."
+                  :="componentField"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          </FormField>
           <div class="grid gap-2 lg:col-span-2">
             <NuxtTurnstile
               v-model="token"

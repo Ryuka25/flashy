@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     "@nuxtjs/turnstile",
   ],
   turnstile: {
+    // Check for local test: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
     siteKey: "0x4AAAAAAAx0B3KeeFZOsh_P",
   },
   colorMode: {

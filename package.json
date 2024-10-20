@@ -15,6 +15,7 @@
     "@nuxt/scripts": "^0.9.5",
     "@nuxtjs/color-mode": "^3.5.1",
     "@nuxtjs/turnstile": "^0.9.10",
+    "@vee-validate/zod": "^4.14.3",
     "@vueuse/core": "^11.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -26,8 +27,10 @@
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7",
+    "vee-validate": "^4.14.3",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.1",
