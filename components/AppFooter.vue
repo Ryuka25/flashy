@@ -5,7 +5,7 @@
       <div class="text-xs text-black/40 dark:text-white/40">
         created with ❤️ by &nbsp;
         <NuxtLink
-          to="https://github.com/Ryuka25"
+          to="https://lovanirina.vercel.app/"
           target="_blank"
           class="underline"
           >Ryuka</NuxtLink
