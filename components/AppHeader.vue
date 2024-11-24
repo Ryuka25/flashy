@@ -26,7 +26,7 @@ const navigation = [
   },
 
   {
-    label: "Contact",
+    label: "Contact us",
     icon: ContactRound,
     to: "/contact",
   },
