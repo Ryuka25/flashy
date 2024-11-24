@@ -7,10 +7,10 @@ const toogleColorMode = () => {
 
 import { Menu, Keyboard, Home, ContactRound } from "lucide-vue-next";
 
-const isOpen = useState(() => false);
+const menuIsOpen = useState(() => false);
 
 const closeMenu = () => {
-  isOpen.value = false;
+  menuIsOpen.value = false;
 };
 
 const navigation = [
@@ -72,7 +72,10 @@ const navigation = [
             <span class="sr-only">Show on GitHub</span>
           </NuxtLink>
         </Button>
-        <Sheet :open="isOpen" @update:open="(value) => (isOpen = value)">
+        <Sheet
+          :open="menuIsOpen"
+          @update:open="(value) => (menuIsOpen = value)"
+        >
           <SheetTrigger as-child>
             <Button variant="outline" size="icon" class="md:hidden">
               <Menu :class="['size-4 transition-all']" />
