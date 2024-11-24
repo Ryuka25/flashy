@@ -1,18 +1,8 @@
 <script setup lang="ts">
-import { useToast } from "@/components/ui/toast/use-toast";
-
 import { APP_DESCRIPTION } from "~/lib/consts";
 import shortcuts from "~/data/shortcuts.json";
 
-const { toast } = useToast();
-
-const onGetStartedClick = () => {
-  toast({
-    title: "🎉 Welcome aboard!",
-    description:
-      "You're already in! Enjoy all the awesome shortcuts waiting for you!",
-  });
-};
+const topShortcuts = shortcuts.slice(0, 11);
 </script>
 
 <template>
@@ -23,9 +13,11 @@ const onGetStartedClick = () => {
       </h1>
       <p class="my-8 hidden lg:block">{{ APP_DESCRIPTION }}</p>
       <div class="flex justify-center lg:justify-start">
-        <Button @click="onGetStartedClick" class="my-4 text-right">
-          <Icon name="lucide:rocket" class="mr-4 h-4 w-4" />
-          Get started
+        <Button class="my-4 text-right" as-child>
+          <NuxtLink to="/shortcuts">
+            <Icon name="lucide:rocket" class="mr-4 h-4 w-4" />
+            Explore shortcuts
+          </NuxtLink>
         </Button>
         <Button class="my-4 ml-2 text-right" variant="outline" as-child>
           <NuxtLink to="https://github.com/Ryuka25/flashy" target="_blank">
@@ -38,8 +30,8 @@ const onGetStartedClick = () => {
     <div class="flex w-full justify-center">
       <ShortcutCarousel
         id="shortcuts"
-        v-if="shortcuts && shortcuts.length > 0"
-        :shortcuts="shortcuts"
+        v-if="topShortcuts && topShortcuts.length > 0"
+        :shortcuts="topShortcuts"
       />
     </div>
   </main>
