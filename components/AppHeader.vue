@@ -5,7 +5,7 @@ const toogleColorMode = () => {
   colorMode.preference = colorMode.preference === "light" ? "dark" : "light";
 };
 
-import { Menu, Zap, Home, ContactRound } from "lucide-vue-next";
+import { Menu, Keyboard, Home, ContactRound } from "lucide-vue-next";
 
 const isOpen = useState(() => false);
 
@@ -21,7 +21,7 @@ const navigation = [
   },
   {
     label: "Shortcuts",
-    icon: Zap,
+    icon: Keyboard,
     to: "/shortcuts",
   },
 
