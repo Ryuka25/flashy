@@ -1,12 +1,5 @@
 <script setup lang="ts">
 import { useToast } from "@/components/ui/toast/use-toast";
-
-const colorMode = useColorMode();
-
-const toogleColorMode = () => {
-  colorMode.preference = colorMode.preference === "light" ? "dark" : "light";
-};
-
 import {
   Menu,
   Keyboard,
@@ -21,11 +14,7 @@ const vFocus = {
   mounted: (el: { focus: () => any }) => el.focus(),
 };
 
-const menuIsOpen = useState(() => false);
-
-const closeMenu = () => {
-  menuIsOpen.value = false;
-};
+const searchInputPlaceholder = "Search shortcut...";
 
 const navigation = [
   {
@@ -46,13 +35,21 @@ const navigation = [
   },
 ];
 
-const searchInputPlaceholder = "Search shortcut...";
-
+const colorMode = useColorMode();
 const { toast } = useToast();
 const router = useRouter();
 
+const menuIsOpen = useState(() => false);
 const searchingMode = useState(() => false);
 const searchText = useState("searchText", () => "");
+
+const toogleColorMode = () => {
+  colorMode.preference = colorMode.preference === "light" ? "dark" : "light";
+};
+
+const closeMenu = () => {
+  menuIsOpen.value = false;
+};
 
 const onSearchClick = () => {
   searchingMode.value = true;
