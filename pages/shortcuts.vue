@@ -87,9 +87,6 @@ const shortcutsPage = computed(() => {
         show-edges
       >
         <PaginationList v-slot="{ items }" class="flex items-center gap-1">
-          <PaginationFirst
-            v-if="page > firstPage && page > firstPage + siblingCount"
-          />
           <PaginationPrev v-if="page > firstPage" />
 
           <template v-for="(item, index) in items">
@@ -110,9 +107,6 @@ const shortcutsPage = computed(() => {
           </template>
 
           <PaginationNext v-if="page < lastPage" />
-          <PaginationLast
-            v-if="page < lastPage && page < lastPage - siblingCount"
-          />
         </PaginationList>
       </Pagination>
       <!-- /Desktop pagination -->
