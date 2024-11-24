@@ -90,7 +90,7 @@ watch(searchText, (value) => {
       />
       <Button variant="ghost" @click="onFilterClick">
         <ListFilter class="h-4 w-4" />
-        <span class="ml-2">Filter</span>
+        <span class="ml-2">Filters</span>
       </Button>
     </div>
     <!-- Mobile Search -->
@@ -107,7 +107,7 @@ watch(searchText, (value) => {
         />
         <Button variant="ghost" @click="onFilterClick">
           <ListFilter class="h-4 w-4" />
-          <span class="ml-2">Filter</span>
+          <span class="ml-2">Filters</span>
         </Button>
       </div>
       <!-- /Desktop Search -->
