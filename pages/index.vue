@@ -19,7 +19,11 @@ const topShortcuts = shortcuts.slice(0, 11);
             Explore shortcuts
           </NuxtLink>
         </Button>
-        <Button class="my-4 ml-2 text-right" variant="outline" as-child>
+        <Button
+          class="my-4 ml-2 hidden text-right min-[420px]:flex"
+          variant="outline"
+          as-child
+        >
           <NuxtLink to="https://github.com/Ryuka25/flashy" target="_blank">
             <Icon name="simple-icons:github" class="mr-4 h-4 w-4" />
             Star on github

@@ -5,6 +5,7 @@ import {
   Keyboard,
   Home,
   ContactRound,
+  Search,
   ArrowLeft,
   ListFilter,
 } from "lucide-vue-next";
@@ -113,8 +114,16 @@ watch(searchText, (value) => {
       <!-- /Desktop Search -->
       <div class="flex flex-1 items-center justify-end gap-1">
         <Button
+          variant="ghost"
+          size="icon"
+          class="min-[420px]:hidden"
+          @click="onSearchClick"
+        >
+          <Search class="size-4" />
+        </Button>
+        <Button
           variant="outline"
-          class="text-xs md:hidden"
+          class="hidden text-xs min-[420px]:flex md:hidden"
           @click="onSearchClick"
         >
           <span>{{ searchInputPlaceholder }}</span>
