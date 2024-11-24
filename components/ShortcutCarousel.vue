@@ -29,6 +29,18 @@ watch(emblaApi, () => {
     .on("autoplay:stop", () => (shortcutAutoplay.value = false))
     .on("reInit", () => (shortcutAutoplay.value = autoplay.isPlaying()));
 });
+
+const stopAutoplay = () => {
+  const autoplay = emblaApi.value?.plugins()?.autoplay;
+  if (!autoplay) return;
+  autoplay.stop();
+};
+
+const resumeAutoplay = () => {
+  const autoplay = emblaApi.value?.plugins()?.autoplay;
+  if (!autoplay) return;
+  autoplay.play();
+};
 </script>
 
 <template>
@@ -39,7 +51,7 @@ watch(emblaApi, () => {
         :checked="shortcutAutoplay"
         @update:checked="toogleAutoplay"
       />
-      <Label for="shortcut-autoplay">Autoplay Shortcuts</Label>
+      <Label for="shortcut-autoplay">Autoplay top rated shortcuts</Label>
     </div>
     <Carousel
       v-slot="{ canScrollNext, canScrollPrev }"
@@ -53,8 +65,12 @@ watch(emblaApi, () => {
           <ShortcutCard :shortcut="shortcut" />
         </CarouselItem>
       </CarouselContent>
-      <CarouselPrevious v-if="canScrollPrev" class="ml-2" />
-      <CarouselNext v-if="canScrollNext" class="mr-2" />
+      <CarouselPrevious
+        v-if="canScrollPrev"
+        class="ml-2"
+        @click="stopAutoplay"
+      />
+      <CarouselNext v-if="canScrollNext" class="mr-2" @click="resumeAutoplay" />
     </Carousel>
   </div>
 </template>
