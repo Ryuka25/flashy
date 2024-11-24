@@ -23,7 +23,7 @@ const shortcutsPage = computed(() => {
 
 <template>
   <div class="mt-2 flex-1">
-    <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-2 md:grid-cols-2">
       <div
         v-for="shortcut in shortcutsPage"
         :key="shortcut.name"
