@@ -34,7 +34,7 @@ const navigation = [
 </script>
 
 <template>
-  <header>
+  <header class="sticky top-0 z-50 -mb-px bg-background/75 backdrop-blur">
     <div class="flex items-center justify-between">
       <NuxtLink to="/" class="flex-1">
         <AppName />
